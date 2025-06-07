@@ -89,7 +89,36 @@ class LinkedList:
         for _ in range(index):
             temp = temp.next
         return temp
-        
+    
+    def set_value(self,index, value):
+        temp = self.get(index)
+        if temp:
+            temp.value = value
+            return True
+        else:
+            False
+
+    def insert(self, index, value):
+        if index > self.length or index < 0:
+            return False
+        if index == 0:
+            return self.prepend(value)
+        if index == self.length:
+            return self.append(value)
+        temp = self.get(index - 1)
+        new_node = Node(value)
+        new_node.next = temp.next
+        temp.next = new_node
+        self.length += 1
+        return True
+
+
+            
+
+
+
+            
+
     # def append(self, value):
 
     # def prepend(self, value):
@@ -136,8 +165,17 @@ my_linked_list.append(2)
 my_linked_list.prepend(9)
 my_linked_list.prepend(7)
 my_linked_list.prepend(2)
-my_linked_list.pop_first()
+# my_linked_list.pop_first()
+
+
+
+my_linked_list.insert(2, 9)
+
 my_linked_list.print_values()
-print(my_linked_list.get(1))
+
+
+# my_linked_list.set_value(4, 8)
+
+# print(f"new value is {my_linked_list.get(4)}")
 
 
